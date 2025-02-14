@@ -1,6 +1,12 @@
 {
   "organization": "Cosmo-Tech",
-  "repositories": [
+  "Backend": [
+    {
+      "name": "CosmoTech-Acceleration-Library"
+    },
+    {
+      "name": "run-orchestrator"
+    },
     {
       "name": "cosmotech-api"
     },
@@ -9,15 +15,19 @@
     },
     {
       "name": "cosmotech-api-python-client"
+    }
+  ],
+  "Infrastructure": [
+    {
+      "name": "terraform-kubernetes-cosmotech-common"
     },
+    {
+      "name": "terraform-kubernetes-cosmotech-tenant"
+    }
+  ],
+  "Frontend": [
     {
       "name": "cosmotech-api-typescript-client"
-    },
-    {
-      "name": "CosmoTech-Acceleration-Library"
-    },
-    {
-      "name": "run-orchestrator"
     },
     {
       "name": "terraform-kubernetes-cosmotech-common"

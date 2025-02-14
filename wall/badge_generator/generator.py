@@ -19,10 +19,12 @@ class RepoConfig(TypedDict):
     name: str
 
 
-class Config(TypedDict):
+class Config(TypedDict, total=False):
     """Type definition for overall configuration."""
     organization: str
-    repositories: List[RepoConfig]
+    Backend: List[RepoConfig]
+    Frontend: List[RepoConfig]
+    Infrastructure: List[RepoConfig]
 
 
 class BadgeGenerator:
@@ -122,39 +124,49 @@ class BadgeGenerator:
 
     def generate_badges(self):
         """Generate the badge wall HTML file."""
-        badge_data = []
+        grouped_data = {}
+        
+        # Process each group
+        for group_name, repos in self.config.items():
+            if group_name == "organization":
+                continue
+                
+            logger.info(f"Processing {group_name} repositories")
+            group_data = []
+            for repo in repos:
+                workflows = self.get_repository_workflows(
+                    self.config['organization'],
+                    repo['name']
+                )
 
-        for repo in self.config['repositories']:
-            workflows = self.get_repository_workflows(
-                self.config['organization'],
-                repo['name']
-            )
+                repo_badges = []
+                for workflow in workflows:
+                    workflow_id = workflow.path.split('/')[-1]
+                    repo_badges.append({
+                        'url': self._get_workflow_badge_url(
+                            self.config['organization'],
+                            repo['name'],
+                            workflow_id
+                        ),
+                        'link': self._get_workflow_url(
+                            self.config['organization'],
+                            repo['name'],
+                            workflow_id
+                        ),
+                        'name': workflow.name
+                    })
 
-            repo_badges = []
-            for workflow in workflows:
-                workflow_id = workflow.path.split('/')[-1]
-                repo_badges.append({
-                    'url': self._get_workflow_badge_url(
-                        self.config['organization'],
-                        repo['name'],
-                        workflow_id
-                    ),
-                    'link': self._get_workflow_url(
-                        self.config['organization'],
-                        repo['name'],
-                        workflow_id
-                    ),
-                    'name': workflow.name
-                })
+                # Only add repositories that have matching workflows
+                if repo_badges:
+                    group_data.append({
+                        'repo': repo['name'],
+                        'badges': repo_badges
+                    })
+            
+            if group_data:
+                grouped_data[group_name] = group_data
 
-            # Only add repositories that have matching workflows
-            if repo_badges:
-                badge_data.append({
-                    'repo': repo['name'],
-                    'badges': repo_badges
-                })
-
-        html = generate_html(badge_data)
+        html = generate_html(grouped_data)
         with open('index.html', 'w') as f:
             f.write(html)
         logger.info(f"Generated badge wall at: {os.path.abspath('index.html')}")
