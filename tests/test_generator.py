@@ -12,10 +12,9 @@ def test_load_config(tmp_path, monkeypatch):
     # Create a temporary config file
     config = {
         "organization": "test-org",
-        "repositories": [
+        "Backend": [
             {
-                "name": "test-repo",
-                "workflows": ["all"]
+                "name": "test-repo"
             }
         ]
     }
@@ -31,8 +30,8 @@ def test_load_config(tmp_path, monkeypatch):
     # Test loading config
     generator = BadgeGenerator()
     assert generator.config["organization"] == "test-org"
-    assert len(generator.config["repositories"]) == 1
-    assert generator.config["repositories"][0]["name"] == "test-repo"
+    assert len(generator.config["Backend"]) == 1
+    assert generator.config["Backend"][0]["name"] == "test-repo"
 
 
 def test_generate_html():
@@ -40,18 +39,20 @@ def test_generate_html():
     from wall.badge_generator.html_generator import generate_html
 
     # Sample badge data
-    badge_data = [
-        {
-            "repo": "test-repo",
-            "badges": [
-                {
-                    "url": "https://example.com/badge.svg",
-                    "link": "https://example.com/workflow",
-                    "name": "Test Workflow"
-                }
-            ]
-        }
-    ]
+    badge_data = {
+        "Backend": [
+            {
+                "repo": "test-repo",
+                "badges": [
+                    {
+                        "url": "https://example.com/badge.svg",
+                        "link": "https://example.com/workflow",
+                        "name": "Test Workflow"
+                    }
+                ]
+            }
+        ]
+    }
 
     # Generate HTML
     html = generate_html(badge_data)

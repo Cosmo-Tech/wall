@@ -1,71 +1,65 @@
 # GitHub Workflow Status Wall
 
-A Python application that generates an HTML wall displaying GitHub workflow status badges for multiple repositories.
+A mobile-first dashboard that displays GitHub workflow status badges for your organization's repositories.
 
-## Project Structure
+## Features
 
-```
-wall/
-├── src/
-│   ├── badge_generator/
-│   │   ├── __init__.py      # Package initialization
-│   │   ├── generator.py     # Core badge generation logic
-│   │   └── html_generator.py # HTML generation utilities
-├── tests/
-│   └── test_generator.py    # Basic tests
-├── config/
-│   └── repos.json          # Repository configuration
-└── pyproject.toml         # Project metadata and dependencies
-```
+- Groups repositories by type (Backend, Frontend, Infrastructure)
+- Responsive design that works on all devices
+- Automatic weekly updates via GitHub Actions
+- Deploys to GitHub Pages
+- Dark mode support and PWA capabilities
 
-## Installation
+## Quick Start
 
-1. Clone the repository
-2. Install dependencies using uv:
+1. Install with uv:
    ```bash
    uv venv
    source .venv/bin/activate  # On Unix/macOS
-   # or
-   .venv\Scripts\activate     # On Windows
    uv pip install -e .
    ```
 
-## Configuration
-
-1. Create a `.env` file with your GitHub token:
-   ```
+2. Configure:
+   ```bash
+   # .env
    GITHUB_TOKEN=your_github_token
    ```
 
-2. Configure repositories in `config/repos.json`:
    ```json
+   # config/repos.json
    {
      "organization": "your-org",
-     "repositories": [
-       {
-         "name": "repo-name",
-         "workflows": ["all"]
-       }
+     "Backend": [
+       { "name": "api-service" },
+       { "name": "worker-service" }
+     ],
+     "Frontend": [
+       { "name": "web-app" }
      ]
    }
    ```
 
-## Usage
-
-Generate the badge wall:
-```bash
-generate-badges
-```
-
-This will create an `index.html` file with the workflow status wall.
+3. Generate and view:
+   ```bash
+   generate-badges
+   # Open docs/index.html in your browser
+   ```
 
 ## Development
 
-Install development dependencies:
 ```bash
+# Install dev dependencies
 uv pip install -e ".[dev]"
+
+# Run tests
+pytest
+
+# Manual deploy
+gh workflow run "Deploy to GitHub Pages"
 ```
 
-Run tests:
-```bash
-pytest
+## GitHub Pages Setup
+
+1. Enable GitHub Pages in repository settings (select 'GitHub Actions' as source)
+2. Access your badge wall at: `https://[username].github.io/[repository]`
+3. Updates automatically every Monday at 00:00 UTC
