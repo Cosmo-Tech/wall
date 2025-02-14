@@ -17,7 +17,6 @@ from .logger import logger
 class RepoConfig(TypedDict):
     """Type definition for repository configuration."""
     name: str
-    workflows: List[str]
 
 
 class Config(TypedDict):
@@ -92,7 +91,7 @@ class BadgeGenerator:
         return repo.visibility == "public"
 
     def get_repository_workflows(self, owner: str, repo_name: str) -> List[Workflow]:
-        """Fetch standard workflows from .github/workflows directory.
+        """Fetch all workflows from the repository.
         
         Args:
             owner: Repository owner/organization.
@@ -101,7 +100,6 @@ class BadgeGenerator:
         Returns:
             List[Workflow]: List of workflow objects.
         """
-        workflows = []
         try:
             repo = self.github.get_repo(f'{owner}/{repo_name}')
             
@@ -114,18 +112,9 @@ class BadgeGenerator:
                 )
             
             logger.info(f"Fetching workflows for {owner}/{repo_name}")
-            standard_workflows = ['ci.yml', 'build.yml', 'test.yml']
-            
-            for workflow_file in standard_workflows:
-                try:
-                    workflow = repo.get_workflow('.github/workflows/' + workflow_file)
-                    workflows.append(workflow)
-                    logger.debug(f"Found workflow: {workflow_file}")
-                except Exception:
-                    # Skip if workflow doesn't exist
-                    logger.debug(f"Workflow not found: {workflow_file}")
-                    continue
-            
+            workflows = list(repo.get_workflows())
+            for workflow in workflows:
+                logger.debug(f"Found workflow: {workflow.name} ({workflow.path})")
             return workflows
         except Exception as e:
             logger.error(f"Error fetching workflows for {owner}/{repo_name}: {e}")
@@ -143,21 +132,20 @@ class BadgeGenerator:
 
             repo_badges = []
             for workflow in workflows:
-                if 'all' in repo['workflows'] or workflow.name in repo['workflows']:
-                    workflow_id = workflow.path.split('/')[-1]
-                    repo_badges.append({
-                        'url': self._get_workflow_badge_url(
-                            self.config['organization'],
-                            repo['name'],
-                            workflow_id
-                        ),
-                        'link': self._get_workflow_url(
-                            self.config['organization'],
-                            repo['name'],
-                            workflow_id
-                        ),
-                        'name': workflow.name
-                    })
+                workflow_id = workflow.path.split('/')[-1]
+                repo_badges.append({
+                    'url': self._get_workflow_badge_url(
+                        self.config['organization'],
+                        repo['name'],
+                        workflow_id
+                    ),
+                    'link': self._get_workflow_url(
+                        self.config['organization'],
+                        repo['name'],
+                        workflow_id
+                    ),
+                    'name': workflow.name
+                })
 
             # Only add repositories that have matching workflows
             if repo_badges:
