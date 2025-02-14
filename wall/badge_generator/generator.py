@@ -167,9 +167,11 @@ class BadgeGenerator:
                 grouped_data[group_name] = group_data
 
         html = generate_html(grouped_data)
-        with open('index.html', 'w') as f:
+        docs_dir = Path('docs')
+        docs_dir.mkdir(exist_ok=True)
+        with open(docs_dir / 'index.html', 'w') as f:
             f.write(html)
-        logger.info(f"Generated badge wall at: {os.path.abspath('index.html')}")
+        logger.info(f"Generated badge wall at: {os.path.abspath('docs/index.html')}")
 
 
 def main():

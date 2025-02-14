@@ -53,79 +53,153 @@ def generate_html(grouped_data: Dict[str, List[Dict]]) -> str:
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="theme-color" content="#f6f8fa">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'><path fill='%23218bff' d='M8 0a8 8 0 100 16A8 8 0 008 0zm3.5 8.5l-5 3a.5.5 0 01-.75-.4v-6a.5.5 0 01.75-.4l5 3a.5.5 0 010 .8z'/></svg>">
     <title>GitHub Workflow Status Wall</title>
     <style>
+        /* Base mobile styles */
         body {{
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-            max-width: 100%;
-            margin: 0 auto;
-            padding: 10px;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            margin: 0;
+            padding: 0;
             background-color: #f6f8fa;
+            font-size: 16px;
         }}
+
+        .container {{
+            padding: env(safe-area-inset-top, 10px) env(safe-area-inset-right, 10px) 
+                     env(safe-area-inset-bottom, 10px) env(safe-area-inset-left, 10px);
+            max-width: 100%;
+        }}
+
         h1 {{
+            font-size: 1.25em;
+            padding: 10px;
+            margin: 0;
+            background-color: white;
+            position: sticky;
+            top: 0;
+            z-index: 1;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
             text-align: center;
             color: #24292e;
-            margin: 10px 0 20px 0;
-            font-size: 1.5em;
         }}
+
         .group-section {{
-            background-color: white;
-            border-radius: 6px;
-            padding: 15px;
-            margin-bottom: 15px;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.12);
+            margin: 10px;
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
         }}
+
         h2 {{
-            font-size: 1.2em;
-            margin: 0 0 10px 0;
+            font-size: 1.1em;
+            padding: 10px;
+            margin: 0;
+            background: #f1f3f5;
             color: #24292e;
             border-bottom: 1px solid #e1e4e8;
-            padding-bottom: 5px;
         }}
+
+        .repo-section {{
+            padding: 8px;
+            border-bottom: 1px solid #eaecef;
+        }}
+
         h3 {{
-            font-size: 1em;
-            margin: 0 0 5px 0;
+            font-size: 0.9em;
+            margin: 0 0 4px 0;
             color: #24292e;
         }}
-        .repo-section {{
-            padding: 10px;
-            margin-bottom: 10px;
-            border: 1px solid #e1e4e8;
-            border-radius: 4px;
-            background-color: #fafbfc;
-        }}
-        .repos-container {{
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-            gap: 10px;
-        }}
+
         .badge-container {{
             display: flex;
             flex-wrap: wrap;
-            gap: 5px;
+            gap: 4px;
         }}
+
         .badge {{
             text-decoration: none;
             transition: opacity 0.2s;
         }}
+
         .badge:hover {{
             opacity: 0.8;
         }}
+
         .badge img {{
-            height: 16px;
+            height: 14px;
         }}
+
         .updated-at {{
             text-align: center;
             color: #586069;
             font-size: 0.8em;
-            margin-top: 20px;
+            padding: 10px;
+            background: white;
+            margin-top: 10px;
+            border-radius: 8px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }}
+
+        /* Tablet breakpoint */
+        @media (min-width: 768px) {{
+            .container {{
+                padding: 20px;
+            }}
+            
+            .repos-container {{
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+                gap: 10px;
+                padding: 10px;
+            }}
+            
+            .repo-section {{
+                border: 1px solid #eaecef;
+                border-radius: 4px;
+                margin: 0;
+            }}
+        }}
+
+        /* Desktop breakpoint */
+        @media (min-width: 1024px) {{
+            .container {{
+                max-width: 1200px;
+                margin: 0 auto;
+            }}
+            
+            .repos-container {{
+                grid-template-columns: repeat(3, 1fr);
+            }}
+            
+            .badge img {{
+                height: 16px;
+            }}
+
+            h1 {{
+                font-size: 1.5em;
+            }}
+
+            h2 {{
+                font-size: 1.2em;
+            }}
+
+            h3 {{
+                font-size: 1em;
+            }}
         }}
     </style>
 </head>
 <body>
     <h1>GitHub Workflow Status Wall</h1>
-    {groups_html}
+    <div class="container">
+        {groups_html}
+    </div>
     <div class="updated-at">
         Last updated: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}
     </div>

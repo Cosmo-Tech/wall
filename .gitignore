@@ -32,5 +32,5 @@ ENV/
 *.swp
 *.swo
 
-# Project specific
-index.html
+# Generated files
+docs/

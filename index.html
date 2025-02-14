@@ -1,0 +1,280 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GitHub Workflow Status Wall</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            max-width: 100%;
+            margin: 0 auto;
+            padding: 10px;
+            background-color: #f6f8fa;
+        }
+        h1 {
+            text-align: center;
+            color: #24292e;
+            margin: 10px 0 20px 0;
+            font-size: 1.5em;
+        }
+        .group-section {
+            background-color: white;
+            border-radius: 6px;
+            padding: 15px;
+            margin-bottom: 15px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.12);
+        }
+        h2 {
+            font-size: 1.2em;
+            margin: 0 0 10px 0;
+            color: #24292e;
+            border-bottom: 1px solid #e1e4e8;
+            padding-bottom: 5px;
+        }
+        h3 {
+            font-size: 1em;
+            margin: 0 0 5px 0;
+            color: #24292e;
+        }
+        .repo-section {
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #e1e4e8;
+            border-radius: 4px;
+            background-color: #fafbfc;
+        }
+        .repos-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 10px;
+        }
+        .badge-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 5px;
+        }
+        .badge {
+            text-decoration: none;
+            transition: opacity 0.2s;
+        }
+        .badge:hover {
+            opacity: 0.8;
+        }
+        .badge img {
+            height: 16px;
+        }
+        .updated-at {
+            text-align: center;
+            color: #586069;
+            font-size: 0.8em;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>GitHub Workflow Status Wall</h1>
+    
+        <div class="group-section">
+            <h2>Backend</h2>
+            <div class="repos-container">
+            <div class="repo-section">
+                <h3>CosmoTech-Acceleration-Library</h3>
+                <div class="badge-container">
+        <a href="https://github.com/Cosmo-Tech/CosmoTech-Acceleration-Library/actions/workflows/codeql-analysis.yml" target="_blank" class="badge">
+            <img src="https://github.com/Cosmo-Tech/CosmoTech-Acceleration-Library/actions/workflows/codeql-analysis.yml/badge.svg" alt="CodeQL workflow status" />
+        </a>
+        <a href="https://github.com/Cosmo-Tech/CosmoTech-Acceleration-Library/actions/workflows/generate_gh_page.yml" target="_blank" class="badge">
+            <img src="https://github.com/Cosmo-Tech/CosmoTech-Acceleration-Library/actions/workflows/generate_gh_page.yml/badge.svg" alt="generate_github_page workflow status" />
+        </a>
+        <a href="https://github.com/Cosmo-Tech/CosmoTech-Acceleration-Library/actions/workflows/linter.yml" target="_blank" class="badge">
+            <img src="https://github.com/Cosmo-Tech/CosmoTech-Acceleration-Library/actions/workflows/linter.yml/badge.svg" alt="Linter workflow status" />
+        </a>
+        <a href="https://github.com/Cosmo-Tech/CosmoTech-Acceleration-Library/actions/workflows/publish-to-pypi.yml" target="_blank" class="badge">
+            <img src="https://github.com/Cosmo-Tech/CosmoTech-Acceleration-Library/actions/workflows/publish-to-pypi.yml/badge.svg" alt="Publish Python 🐍 distributions 📦 to PyPI and TestPyPI workflow status" />
+        </a>
+        <a href="https://github.com/Cosmo-Tech/CosmoTech-Acceleration-Library/actions/workflows/tag_latest_release_gh_page.yml" target="_blank" class="badge">
+            <img src="https://github.com/Cosmo-Tech/CosmoTech-Acceleration-Library/actions/workflows/tag_latest_release_gh_page.yml/badge.svg" alt="tag_latest_release_gh_page workflow status" />
+        </a>
+        <a href="https://github.com/Cosmo-Tech/CosmoTech-Acceleration-Library/actions/workflows/dependabot-updates" target="_blank" class="badge">
+            <img src="https://github.com/Cosmo-Tech/CosmoTech-Acceleration-Library/actions/workflows/dependabot-updates/badge.svg" alt="Dependabot Updates workflow status" />
+        </a>
+        <a href="https://github.com/Cosmo-Tech/CosmoTech-Acceleration-Library/actions/workflows/pages-build-deployment" target="_blank" class="badge">
+            <img src="https://github.com/Cosmo-Tech/CosmoTech-Acceleration-Library/actions/workflows/pages-build-deployment/badge.svg" alt="pages-build-deployment workflow status" />
+        </a></div>
+            </div>
+            <div class="repo-section">
+                <h3>run-orchestrator</h3>
+                <div class="badge-container">
+        <a href="https://github.com/Cosmo-Tech/run-orchestrator/actions/workflows/old_issues_unit_tests.yml" target="_blank" class="badge">
+            <img src="https://github.com/Cosmo-Tech/run-orchestrator/actions/workflows/old_issues_unit_tests.yml/badge.svg" alt="issues_unit_tests workflow status" />
+        </a>
+        <a href="https://github.com/Cosmo-Tech/run-orchestrator/actions/workflows/publish_to_pypi.yml" target="_blank" class="badge">
+            <img src="https://github.com/Cosmo-Tech/run-orchestrator/actions/workflows/publish_to_pypi.yml/badge.svg" alt="Publish Python 🐍 distributions 📦 to PyPI and TestPyPI workflow status" />
+        </a>
+        <a href="https://github.com/Cosmo-Tech/run-orchestrator/actions/workflows/tag_latest_release_gh_page.yml" target="_blank" class="badge">
+            <img src="https://github.com/Cosmo-Tech/run-orchestrator/actions/workflows/tag_latest_release_gh_page.yml/badge.svg" alt="tag_latest_release_gh_page workflow status" />
+        </a>
+        <a href="https://github.com/Cosmo-Tech/run-orchestrator/actions/workflows/codeql" target="_blank" class="badge">
+            <img src="https://github.com/Cosmo-Tech/run-orchestrator/actions/workflows/codeql/badge.svg" alt="CodeQL workflow status" />
+        </a>
+        <a href="https://github.com/Cosmo-Tech/run-orchestrator/actions/workflows/pages-build-deployment" target="_blank" class="badge">
+            <img src="https://github.com/Cosmo-Tech/run-orchestrator/actions/workflows/pages-build-deployment/badge.svg" alt="pages-build-deployment workflow status" />
+        </a></div>
+            </div>
+            <div class="repo-section">
+                <h3>cosmotech-api</h3>
+                <div class="badge-container">
+        <a href="https://github.com/Cosmo-Tech/cosmotech-api/actions/workflows/lint.yml" target="_blank" class="badge">
+            <img src="https://github.com/Cosmo-Tech/cosmotech-api/actions/workflows/lint.yml/badge.svg" alt="Lint workflow status" />
+        </a>
+        <a href="https://github.com/Cosmo-Tech/cosmotech-api/actions/workflows/openapi.yml" target="_blank" class="badge">
+            <img src="https://github.com/Cosmo-Tech/cosmotech-api/actions/workflows/openapi.yml/badge.svg" alt="OpenAPI workflow status" />
+        </a>
+        <a href="https://github.com/Cosmo-Tech/cosmotech-api/actions/workflows/openapi_clients.yml" target="_blank" class="badge">
+            <img src="https://github.com/Cosmo-Tech/cosmotech-api/actions/workflows/openapi_clients.yml/badge.svg" alt="OpenAPI Clients workflow status" />
+        </a>
+        <a href="https://github.com/Cosmo-Tech/cosmotech-api/actions/workflows/deploy.yml" target="_blank" class="badge">
+            <img src="https://github.com/Cosmo-Tech/cosmotech-api/actions/workflows/deploy.yml/badge.svg" alt="Deploy Dev workflow status" />
+        </a>
+        <a href="https://github.com/Cosmo-Tech/cosmotech-api/actions/workflows/build_test_package.yml" target="_blank" class="badge">
+            <img src="https://github.com/Cosmo-Tech/cosmotech-api/actions/workflows/build_test_package.yml/badge.svg" alt="Build, Test and Package workflow status" />
+        </a>
+        <a href="https://github.com/Cosmo-Tech/cosmotech-api/actions/workflows/doc.yml" target="_blank" class="badge">
+            <img src="https://github.com/Cosmo-Tech/cosmotech-api/actions/workflows/doc.yml/badge.svg" alt="Documentation workflow status" />
+        </a>
+        <a href="https://github.com/Cosmo-Tech/cosmotech-api/actions/workflows/deploy_staging.yml" target="_blank" class="badge">
+            <img src="https://github.com/Cosmo-Tech/cosmotech-api/actions/workflows/deploy_staging.yml/badge.svg" alt="Deploy Staging workflow status" />
+        </a>
+        <a href="https://github.com/Cosmo-Tech/cosmotech-api/actions/workflows/dependabot-updates" target="_blank" class="badge">
+            <img src="https://github.com/Cosmo-Tech/cosmotech-api/actions/workflows/dependabot-updates/badge.svg" alt="Dependabot Updates workflow status" />
+        </a></div>
+            </div>
+            <div class="repo-section">
+                <h3>cosmotech-api-common</h3>
+                <div class="badge-container">
+        <a href="https://github.com/Cosmo-Tech/cosmotech-api-common/actions/workflows/build_test.yml" target="_blank" class="badge">
+            <img src="https://github.com/Cosmo-Tech/cosmotech-api-common/actions/workflows/build_test.yml/badge.svg" alt="Build, Test And Upgrade SNAPSHOT if needed workflow status" />
+        </a>
+        <a href="https://github.com/Cosmo-Tech/cosmotech-api-common/actions/workflows/detekt.yml" target="_blank" class="badge">
+            <img src="https://github.com/Cosmo-Tech/cosmotech-api-common/actions/workflows/detekt.yml/badge.svg" alt="Code Scanning workflow status" />
+        </a>
+        <a href="https://github.com/Cosmo-Tech/cosmotech-api-common/actions/workflows/lint.yml" target="_blank" class="badge">
+            <img src="https://github.com/Cosmo-Tech/cosmotech-api-common/actions/workflows/lint.yml/badge.svg" alt="Lint workflow status" />
+        </a>
+        <a href="https://github.com/Cosmo-Tech/cosmotech-api-common/actions/workflows/publish.yml" target="_blank" class="badge">
+            <img src="https://github.com/Cosmo-Tech/cosmotech-api-common/actions/workflows/publish.yml/badge.svg" alt="Publish package to GitHub Packages workflow status" />
+        </a>
+        <a href="https://github.com/Cosmo-Tech/cosmotech-api-common/actions/workflows/dependabot-updates" target="_blank" class="badge">
+            <img src="https://github.com/Cosmo-Tech/cosmotech-api-common/actions/workflows/dependabot-updates/badge.svg" alt="Dependabot Updates workflow status" />
+        </a></div>
+            </div>
+            <div class="repo-section">
+                <h3>cosmotech-api-python-client</h3>
+                <div class="badge-container">
+        <a href="https://github.com/Cosmo-Tech/cosmotech-api-python-client/actions/workflows/publish-to-test-pypi.yml" target="_blank" class="badge">
+            <img src="https://github.com/Cosmo-Tech/cosmotech-api-python-client/actions/workflows/publish-to-test-pypi.yml/badge.svg" alt="Publish Python 🐍 distributions 📦 to PyPI and TestPyPI workflow status" />
+        </a>
+        <a href="https://github.com/Cosmo-Tech/cosmotech-api-python-client/actions/workflows/python.yml" target="_blank" class="badge">
+            <img src="https://github.com/Cosmo-Tech/cosmotech-api-python-client/actions/workflows/python.yml/badge.svg" alt="cosmotech_api Python package workflow status" />
+        </a></div>
+            </div></div>
+        </div>
+        <div class="group-section">
+            <h2>Infrastructure</h2>
+            <div class="repos-container">
+            <div class="repo-section">
+                <h3>terraform-kubernetes-cosmotech-common</h3>
+                <div class="badge-container">
+        <a href="https://github.com/Cosmo-Tech/terraform-kubernetes-cosmotech-common/actions/workflows/generate_docs.yaml" target="_blank" class="badge">
+            <img src="https://github.com/Cosmo-Tech/terraform-kubernetes-cosmotech-common/actions/workflows/generate_docs.yaml/badge.svg" alt="Terraform Docs workflow status" />
+        </a>
+        <a href="https://github.com/Cosmo-Tech/terraform-kubernetes-cosmotech-common/actions/workflows/lint.yaml" target="_blank" class="badge">
+            <img src="https://github.com/Cosmo-Tech/terraform-kubernetes-cosmotech-common/actions/workflows/lint.yaml/badge.svg" alt="Lint workflow status" />
+        </a>
+        <a href="https://github.com/Cosmo-Tech/terraform-kubernetes-cosmotech-common/actions/workflows/validate.yaml" target="_blank" class="badge">
+            <img src="https://github.com/Cosmo-Tech/terraform-kubernetes-cosmotech-common/actions/workflows/validate.yaml/badge.svg" alt="Validate Terraform Module workflow status" />
+        </a></div>
+            </div>
+            <div class="repo-section">
+                <h3>terraform-kubernetes-cosmotech-tenant</h3>
+                <div class="badge-container">
+        <a href="https://github.com/Cosmo-Tech/terraform-kubernetes-cosmotech-tenant/actions/workflows/generate_docs.yaml" target="_blank" class="badge">
+            <img src="https://github.com/Cosmo-Tech/terraform-kubernetes-cosmotech-tenant/actions/workflows/generate_docs.yaml/badge.svg" alt="Terraform Docs workflow status" />
+        </a>
+        <a href="https://github.com/Cosmo-Tech/terraform-kubernetes-cosmotech-tenant/actions/workflows/lint.yaml" target="_blank" class="badge">
+            <img src="https://github.com/Cosmo-Tech/terraform-kubernetes-cosmotech-tenant/actions/workflows/lint.yaml/badge.svg" alt="Lint workflow status" />
+        </a></div>
+            </div></div>
+        </div>
+        <div class="group-section">
+            <h2>Frontend</h2>
+            <div class="repos-container">
+            <div class="repo-section">
+                <h3>cosmotech-api-typescript-client</h3>
+                <div class="badge-container">
+        <a href="https://github.com/Cosmo-Tech/cosmotech-api-typescript-client/actions/workflows/publish.yaml" target="_blank" class="badge">
+            <img src="https://github.com/Cosmo-Tech/cosmotech-api-typescript-client/actions/workflows/publish.yaml/badge.svg" alt="Node.js Package on npm workflow status" />
+        </a></div>
+            </div>
+            <div class="repo-section">
+                <h3>terraform-kubernetes-cosmotech-common</h3>
+                <div class="badge-container">
+        <a href="https://github.com/Cosmo-Tech/terraform-kubernetes-cosmotech-common/actions/workflows/generate_docs.yaml" target="_blank" class="badge">
+            <img src="https://github.com/Cosmo-Tech/terraform-kubernetes-cosmotech-common/actions/workflows/generate_docs.yaml/badge.svg" alt="Terraform Docs workflow status" />
+        </a>
+        <a href="https://github.com/Cosmo-Tech/terraform-kubernetes-cosmotech-common/actions/workflows/lint.yaml" target="_blank" class="badge">
+            <img src="https://github.com/Cosmo-Tech/terraform-kubernetes-cosmotech-common/actions/workflows/lint.yaml/badge.svg" alt="Lint workflow status" />
+        </a>
+        <a href="https://github.com/Cosmo-Tech/terraform-kubernetes-cosmotech-common/actions/workflows/validate.yaml" target="_blank" class="badge">
+            <img src="https://github.com/Cosmo-Tech/terraform-kubernetes-cosmotech-common/actions/workflows/validate.yaml/badge.svg" alt="Validate Terraform Module workflow status" />
+        </a></div>
+            </div>
+            <div class="repo-section">
+                <h3>terraform-kubernetes-cosmotech-tenant</h3>
+                <div class="badge-container">
+        <a href="https://github.com/Cosmo-Tech/terraform-kubernetes-cosmotech-tenant/actions/workflows/generate_docs.yaml" target="_blank" class="badge">
+            <img src="https://github.com/Cosmo-Tech/terraform-kubernetes-cosmotech-tenant/actions/workflows/generate_docs.yaml/badge.svg" alt="Terraform Docs workflow status" />
+        </a>
+        <a href="https://github.com/Cosmo-Tech/terraform-kubernetes-cosmotech-tenant/actions/workflows/lint.yaml" target="_blank" class="badge">
+            <img src="https://github.com/Cosmo-Tech/terraform-kubernetes-cosmotech-tenant/actions/workflows/lint.yaml/badge.svg" alt="Lint workflow status" />
+        </a></div>
+            </div>
+            <div class="repo-section">
+                <h3>azure-sample-webapp</h3>
+                <div class="badge-container">
+        <a href="https://github.com/Cosmo-Tech/azure-sample-webapp/actions/workflows/eslint.yml" target="_blank" class="badge">
+            <img src="https://github.com/Cosmo-Tech/azure-sample-webapp/actions/workflows/eslint.yml/badge.svg" alt="Lint workflow status" />
+        </a>
+        <a href="https://github.com/Cosmo-Tech/azure-sample-webapp/actions/workflows/test.yml" target="_blank" class="badge">
+            <img src="https://github.com/Cosmo-Tech/azure-sample-webapp/actions/workflows/test.yml/badge.svg" alt="Tests workflow status" />
+        </a>
+        <a href="https://github.com/Cosmo-Tech/azure-sample-webapp/actions/workflows/azure-static-web-apps-nice-wave-0f618f503.yml" target="_blank" class="badge">
+            <img src="https://github.com/Cosmo-Tech/azure-sample-webapp/actions/workflows/azure-static-web-apps-nice-wave-0f618f503.yml/badge.svg" alt="Azure Static Web Apps CI/CD workflow status" />
+        </a>
+        <a href="https://github.com/Cosmo-Tech/azure-sample-webapp/actions/workflows/azure-static-web-apps-jolly-tree-0c640e503.yml" target="_blank" class="badge">
+            <img src="https://github.com/Cosmo-Tech/azure-sample-webapp/actions/workflows/azure-static-web-apps-jolly-tree-0c640e503.yml/badge.svg" alt="Azure Static Web Apps CI/CD workflow status" />
+        </a>
+        <a href="https://github.com/Cosmo-Tech/azure-sample-webapp/actions/workflows/build-push-experimental-webapp-server.yml" target="_blank" class="badge">
+            <img src="https://github.com/Cosmo-Tech/azure-sample-webapp/actions/workflows/build-push-experimental-webapp-server.yml/badge.svg" alt="Create and publish a Docker image workflow status" />
+        </a>
+        <a href="https://github.com/Cosmo-Tech/azure-sample-webapp/actions/workflows/build-push-webapp-server-docker-images.yml" target="_blank" class="badge">
+            <img src="https://github.com/Cosmo-Tech/azure-sample-webapp/actions/workflows/build-push-webapp-server-docker-images.yml/badge.svg" alt="Create and publish the webapp server docker images workflow status" />
+        </a>
+        <a href="https://github.com/Cosmo-Tech/azure-sample-webapp/actions/workflows/build-push-vanilla-webapp-server.yml" target="_blank" class="badge">
+            <img src="https://github.com/Cosmo-Tech/azure-sample-webapp/actions/workflows/build-push-vanilla-webapp-server.yml/badge.svg" alt="Create and publish the webapp server docker images in vanilla mode workflow status" />
+        </a>
+        <a href="https://github.com/Cosmo-Tech/azure-sample-webapp/actions/workflows/package-cosmotech-business-webapp-chart.yml" target="_blank" class="badge">
+            <img src="https://github.com/Cosmo-Tech/azure-sample-webapp/actions/workflows/package-cosmotech-business-webapp-chart.yml/badge.svg" alt="Package cosmotech-business-webapp chart workflow status" />
+        </a>
+        <a href="https://github.com/Cosmo-Tech/azure-sample-webapp/actions/workflows/manual-release-vanilla-webapp-server.yml" target="_blank" class="badge">
+            <img src="https://github.com/Cosmo-Tech/azure-sample-webapp/actions/workflows/manual-release-vanilla-webapp-server.yml/badge.svg" alt="Manual release of webapp server docker images in vanilla mode workflow status" />
+        </a></div>
+            </div></div>
+        </div>
+    <div class="updated-at">
+        Last updated: 2025-02-14 17:55:14
+    </div>
+</body>
+</html>
