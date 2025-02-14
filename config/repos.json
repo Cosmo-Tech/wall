@@ -4,6 +4,38 @@
     {
       "name": "cosmotech-api",
       "workflows": ["all"]
+    },
+    {
+      "name": "cosmotech-api-common",
+      "workflows": ["all"]
+    },
+    {
+      "name": "cosmotech-api-python-client",
+      "workflows": ["all"]
+    },
+    {
+      "name": "cosmotech-api-typescript-client",
+      "workflows": ["all"]
+    },
+    {
+      "name": "CosmoTech-Acceleration-Library",
+      "workflows": ["all"]
+    },
+    {
+      "name": "run-orchestrator",
+      "workflows": ["all"]
+    },
+    {
+      "name": "terraform-kubernetes-cosmotech-platform",
+      "workflows": ["all"]
+    },
+    {
+      "name": "terraform-kubernetes-cosmotech-tenant",
+      "workflows": ["all"]
+    },
+    {
+      "name": "azure-sample-webapp",
+      "workflows": ["all"]
     }
   ]
 }

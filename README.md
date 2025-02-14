@@ -1,48 +1,50 @@
 # GitHub Workflow Status Wall
 
-A simple Python script that generates a static HTML dashboard displaying GitHub Actions workflow status badges for multiple repositories in an organization.
+A Python application that generates an HTML wall displaying GitHub workflow status badges for multiple repositories.
 
-## Features
+## Project Structure
 
-- Fetches and displays workflow status badges
-- Clean, responsive interface
-- Configurable repository list
-- Links directly to workflow runs
-- Single script execution
+```
+wall/
+├── src/
+│   ├── badge_generator/
+│   │   ├── __init__.py      # Package initialization
+│   │   ├── generator.py     # Core badge generation logic
+│   │   └── html_generator.py # HTML generation utilities
+├── tests/
+│   └── test_generator.py    # Basic tests
+├── config/
+│   └── repos.json          # Repository configuration
+└── pyproject.toml         # Project metadata and dependencies
+```
 
-## Setup
+## Installation
 
-1. Clone this repository:
+1. Clone the repository
+2. Install dependencies using uv:
    ```bash
-   git clone https://github.com/yourusername/wall.git
-   cd wall
+   uv venv
+   source .venv/bin/activate  # On Unix/macOS
+   # or
+   .venv\Scripts\activate     # On Windows
+   uv pip install -e .
    ```
 
-2. Create a virtual environment and install dependencies:
-   ```bash
-   python -m venv venv
-   source venv/bin/activate  # On Windows: venv\Scripts\activate
-   pip install -r requirements.txt
+## Configuration
+
+1. Create a `.env` file with your GitHub token:
+   ```
+   GITHUB_TOKEN=your_github_token
    ```
 
-3. Create a GitHub Personal Access Token:
-   - Go to GitHub Settings > Developer settings > Personal access tokens
-   - Generate a new token with `repo` and `workflow` scopes
-   - Copy the token
-
-4. Create a `.env` file with your token:
-   ```bash
-   echo "GITHUB_TOKEN=your_token_here" > .env
-   ```
-
-5. Configure repositories in `config/repos.json`:
+2. Configure repositories in `config/repos.json`:
    ```json
    {
-     "organization": "your-org-name",
+     "organization": "your-org",
      "repositories": [
        {
          "name": "repo-name",
-         "workflows": ["all"]  // or ["specific-workflow-name"]
+         "workflows": ["all"]
        }
      ]
    }
@@ -50,21 +52,20 @@ A simple Python script that generates a static HTML dashboard displaying GitHub 
 
 ## Usage
 
-Run the script to generate the badge wall:
+Generate the badge wall:
 ```bash
-python generate_badges.py
+generate-badges
 ```
 
-This will create an `index.html` file in the current directory. Open it in your browser to view the workflow badges.
+This will create an `index.html` file with the workflow status wall.
 
-## Contributing
+## Development
 
-1. Fork the repository
-2. Create a feature branch
-3. Commit your changes
-4. Push to the branch
-5. Create a Pull Request
+Install development dependencies:
+```bash
+uv pip install -e ".[dev]"
+```
 
-## License
-
-MIT
+Run tests:
+```bash
+pytest
