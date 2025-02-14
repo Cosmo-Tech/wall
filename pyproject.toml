@@ -23,4 +23,4 @@ requires = ["hatchling"]
 build-backend = "hatchling.build"
 
 [project.scripts]
-generate-badges = "badge_generator.generator:main"
+generate-badges = "wall.badge_generator.generator:main"

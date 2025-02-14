@@ -4,7 +4,7 @@ import json
 from pathlib import Path
 
 import pytest
-from badge_generator import BadgeGenerator
+from wall.badge_generator import BadgeGenerator
 
 
 def test_load_config(tmp_path):
@@ -37,7 +37,7 @@ def test_load_config(tmp_path):
 
 def test_generate_html(tmp_path):
     """Test HTML generation with sample data."""
-    from badge_generator.html_generator import generate_html
+    from wall.badge_generator.html_generator import generate_html
 
     # Sample badge data
     badge_data = [
