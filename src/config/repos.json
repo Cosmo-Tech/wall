@@ -1,9 +1,0 @@
-{
-  "organization": "Cosmo-Tech",
-  "repositories": [
-    {
-      "name": "cosmotech-api",
-      "workflows": ["all"]
-    }
-  ]
-}
