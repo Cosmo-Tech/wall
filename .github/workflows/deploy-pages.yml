@@ -37,7 +37,7 @@ jobs:
     - name: Generate badge wall
       run: generate-badges
       env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        TOKEN: ${{ secrets.TOKEN }}
     
     - name: Deploy to GitHub Pages
       uses: JamesIves/github-pages-deploy-action@v4

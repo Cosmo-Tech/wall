@@ -24,7 +24,7 @@ def test_load_config(tmp_path, monkeypatch):
     config_file.write_text(json.dumps(config))
 
     # Mock environment variables
-    monkeypatch.setenv("GITHUB_TOKEN", "dummy-token")
+    monkeypatch.setenv("TOKEN", "dummy-token")
     monkeypatch.chdir(tmp_path)
 
     # Test loading config

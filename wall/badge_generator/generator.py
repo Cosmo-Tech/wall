@@ -33,9 +33,9 @@ class BadgeGenerator:
     def __init__(self):
         """Initialize the badge generator with GitHub credentials."""
         load_dotenv()
-        token = os.getenv('GITHUB_TOKEN')
+        token = os.getenv('TOKEN')
         if not token:
-            raise ValueError('GITHUB_TOKEN environment variable is required')
+            raise ValueError('TOKEN environment variable is required')
         self.github = Github(token)
         self.config = self._load_config()
 

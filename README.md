@@ -22,7 +22,7 @@ A mobile-first dashboard that displays GitHub workflow status badges for your or
 2. Configure:
    ```bash
    # .env
-   GITHUB_TOKEN=your_github_token
+   TOKEN=your_github_token
    ```
 
    ```json
