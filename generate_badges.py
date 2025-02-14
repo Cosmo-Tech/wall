@@ -46,10 +46,21 @@ class BadgeGenerator:
         return f'https://github.com/{owner}/{repo}/actions/workflows/{workflow_id}'
 
     def get_repository_workflows(self, owner: str, repo_name: str) -> List[Workflow]:
-        """Fetch workflows for a repository"""
+        """Fetch standard workflows from .github/workflows directory"""
+        workflows = []
         try:
             repo = self.github.get_repo(f'{owner}/{repo_name}')
-            return list(repo.get_workflows())
+            standard_workflows = ['ci.yml', 'build.yml', 'test.yml']
+            
+            for workflow_file in standard_workflows:
+                try:
+                    workflow = repo.get_workflow('.github/workflows/' + workflow_file)
+                    workflows.append(workflow)
+                except Exception:
+                    # Skip if workflow doesn't exist
+                    continue
+            
+            return workflows
         except Exception as e:
             print(f'Error fetching workflows for {owner}/{repo_name}: {e}')
             return []
