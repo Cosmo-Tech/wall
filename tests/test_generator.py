@@ -7,7 +7,7 @@ import pytest
 from wall.badge_generator import BadgeGenerator
 
 
-def test_load_config(tmp_path):
+def test_load_config(tmp_path, monkeypatch):
     """Test loading configuration from file."""
     # Create a temporary config file
     config = {
@@ -24,8 +24,8 @@ def test_load_config(tmp_path):
     config_file = config_dir / "repos.json"
     config_file.write_text(json.dumps(config))
 
-    # Monkeypatch the config path
-    monkeypatch = pytest.MonkeyPatch()
+    # Mock environment variables
+    monkeypatch.setenv("GITHUB_TOKEN", "dummy-token")
     monkeypatch.chdir(tmp_path)
 
     # Test loading config
@@ -35,7 +35,7 @@ def test_load_config(tmp_path):
     assert generator.config["repositories"][0]["name"] == "test-repo"
 
 
-def test_generate_html(tmp_path):
+def test_generate_html():
     """Test HTML generation with sample data."""
     from wall.badge_generator.html_generator import generate_html
 
