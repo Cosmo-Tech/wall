@@ -149,17 +149,17 @@ class BadgeGenerator:
             repo_badges = []
             for workflow in workflows:
                 if 'all' in repo['workflows'] or workflow.name in repo['workflows']:
-                    workflow_id = workflow.url.split('/')[-1]
+                    workflow_id = workflow.path.split('/')[-1]
                     repo_badges.append({
                         'url': self._get_workflow_badge_url(
                             self.config['organization'],
                             repo['name'],
-                            f'{workflow_id}.yml'
+                            workflow_id
                         ),
                         'link': self._get_workflow_url(
                             self.config['organization'],
                             repo['name'],
-                            f'{workflow_id}.yml'
+                            workflow_id
                         ),
                         'name': workflow.name
                     })
