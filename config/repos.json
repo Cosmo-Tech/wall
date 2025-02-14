@@ -1,5 +1,10 @@
 {
   "organization": "Cosmo-Tech",
+  "Self": [
+    {
+      "name": "wall"
+    }
+  ]
   "Backend": [
     {
       "name": "CosmoTech-Acceleration-Library"
