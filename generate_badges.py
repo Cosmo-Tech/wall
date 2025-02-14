@@ -164,10 +164,12 @@ class BadgeGenerator:
                         'name': workflow.name
                     })
 
-            badge_data.append({
-                'repo': repo['name'],
-                'badges': repo_badges
-            })
+            # Only add repositories that have matching workflows
+            if repo_badges:
+                badge_data.append({
+                    'repo': repo['name'],
+                    'badges': repo_badges
+                })
 
         html = self.generate_html(badge_data)
         with open('index.html', 'w') as f:
