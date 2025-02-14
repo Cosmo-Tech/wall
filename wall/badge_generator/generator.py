@@ -7,9 +7,11 @@ from typing import Dict, List, TypedDict
 
 from dotenv import load_dotenv
 from github import Github
+from github.Repository import Repository
 from github.Workflow import Workflow
 
 from .html_generator import generate_html
+from .logger import logger
 
 
 class RepoConfig(TypedDict):
@@ -78,6 +80,17 @@ class BadgeGenerator:
         """
         return f'https://github.com/{owner}/{repo}/actions/workflows/{workflow_id}'
 
+    def _check_repo_visibility(self, repo: Repository) -> bool:
+        """Check if a repository is public.
+        
+        Args:
+            repo: GitHub repository object
+            
+        Returns:
+            bool: True if public, False if private/internal
+        """
+        return repo.visibility == "public"
+
     def get_repository_workflows(self, owner: str, repo_name: str) -> List[Workflow]:
         """Fetch standard workflows from .github/workflows directory.
         
@@ -91,19 +104,31 @@ class BadgeGenerator:
         workflows = []
         try:
             repo = self.github.get_repo(f'{owner}/{repo_name}')
+            
+            # Check visibility and warn if not public
+            if not self._check_repo_visibility(repo):
+                logger.warning(
+                    f"Repository {owner}/{repo_name} is not public "
+                    f"(visibility: {repo.visibility}). "
+                    "Ensure you have appropriate access tokens."
+                )
+            
+            logger.info(f"Fetching workflows for {owner}/{repo_name}")
             standard_workflows = ['ci.yml', 'build.yml', 'test.yml']
             
             for workflow_file in standard_workflows:
                 try:
                     workflow = repo.get_workflow('.github/workflows/' + workflow_file)
                     workflows.append(workflow)
+                    logger.debug(f"Found workflow: {workflow_file}")
                 except Exception:
                     # Skip if workflow doesn't exist
+                    logger.debug(f"Workflow not found: {workflow_file}")
                     continue
             
             return workflows
         except Exception as e:
-            print(f'Error fetching workflows for {owner}/{repo_name}: {e}')
+            logger.error(f"Error fetching workflows for {owner}/{repo_name}: {e}")
             return []
 
     def generate_badges(self):
@@ -144,7 +169,7 @@ class BadgeGenerator:
         html = generate_html(badge_data)
         with open('index.html', 'w') as f:
             f.write(html)
-        print(f'Generated badge wall at: {os.path.abspath("index.html")}')
+        logger.info(f"Generated badge wall at: {os.path.abspath('index.html')}")
 
 
 def main():
