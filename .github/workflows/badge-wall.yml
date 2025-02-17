@@ -24,25 +24,11 @@ jobs:
       uses: actions/setup-python@v5
       with:
         python-version: "3.13"
-        cache: 'pip'
-    
-    - name: Cache uv installation
-      uses: actions/cache@v4
-      with:
-        path: ~/.cargo/bin/uv
-        key: ${{ runner.os }}-uv-${{ hashFiles('**/pyproject.toml') }}
     
     - name: Install uv
-      if: steps.cache-uv.outputs.cache-hit != 'true'
       run: |
         curl -LsSf https://astral.sh/uv/install.sh | sh
         echo "$HOME/.cargo/bin" >> $GITHUB_PATH
-    
-    - name: Cache virtual environment
-      uses: actions/cache@v4
-      with:
-        path: .venv
-        key: venv-${{ runner.os }}-py-${{ hashFiles('**/pyproject.toml') }}-${{ hashFiles('**/uv.lock') }}
     
     - name: Create and activate virtual environment
       run: |
