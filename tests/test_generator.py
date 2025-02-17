@@ -1,23 +1,14 @@
 """Tests for the badge generator."""
 
 import json
-from pathlib import Path
 
-import pytest
 from wall.badge_generator import BadgeGenerator
 
 
 def test_load_config(tmp_path, monkeypatch):
     """Test loading configuration from file."""
     # Create a temporary config file
-    config = {
-        "organization": "test-org",
-        "Backend": [
-            {
-                "name": "test-repo"
-            }
-        ]
-    }
+    config = {"organization": "test-org", "Backend": [{"name": "test-repo"}]}
     config_dir = tmp_path / "config"
     config_dir.mkdir()
     config_file = config_dir / "repos.json"
@@ -47,9 +38,9 @@ def test_generate_html():
                     {
                         "url": "https://example.com/badge.svg",
                         "link": "https://example.com/workflow",
-                        "name": "Test Workflow"
+                        "name": "Test Workflow",
                     }
-                ]
+                ],
             }
         ]
     }

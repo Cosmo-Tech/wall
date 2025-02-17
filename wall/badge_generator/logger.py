@@ -16,9 +16,9 @@ logging.basicConfig(
             rich_tracebacks=True,
             markup=True,
             show_time=True,
-            console=Console(file=sys.stderr)
+            console=Console(file=sys.stderr),
         )
-    ]
+    ],
 )
 
 logger = logging.getLogger("badge_generator")
