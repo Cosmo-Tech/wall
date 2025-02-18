@@ -37,9 +37,7 @@ def test_github_service():
     service = GitHubService("dummy-token")
     
     # Test URL generation
-    badge_url = service.get_workflow_badge_url("test-org", "test-repo", "test.yml")
-    assert badge_url == "https://github.com/test-org/test-repo/actions/workflows/test.yml/badge.svg"
-    
+
     workflow_url = service.get_workflow_url("test-org", "test-repo", "test.yml")
     assert workflow_url == "https://github.com/test-org/test-repo/actions/workflows/test.yml"
 
@@ -52,7 +50,6 @@ def test_badge_service(mocker):
     mock_workflow.name = "Test Workflow"
     mock_workflow.path = "workflows/test.yml"
     github_service.get_repository_workflows.return_value = [mock_workflow]
-    github_service.get_workflow_badge_url.return_value = "https://example.com/badge.svg"
     github_service.get_workflow_url.return_value = "https://example.com/workflow"
 
     # Create badge service
@@ -61,7 +58,6 @@ def test_badge_service(mocker):
     # Test badge generation
     badges = service.generate_repository_badges("test-org", "test-repo")
     assert len(badges) == 1
-    assert badges[0]["url"] == "https://example.com/badge.svg"
     assert badges[0]["link"] == "https://example.com/workflow"
     assert badges[0]["name"] == "Test Workflow"
 

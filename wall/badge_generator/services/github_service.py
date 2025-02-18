@@ -60,19 +60,6 @@ class GitHubService:
             logger.error(f"Error fetching workflows for {owner}/{repo_name}: {e}")
             return []
 
-    def get_workflow_badge_url(self, owner: str, repo: str, workflow_id: str) -> str:
-        """Generate the badge URL for a workflow.
-
-        Args:
-            owner: Repository owner/organization.
-            repo: Repository name.
-            workflow_id: Workflow file name.
-
-        Returns:
-            str: URL for the workflow status badge.
-        """
-        return f"https://github.com/{owner}/{repo}/actions/workflows/{workflow_id}/badge.svg"
-
     def get_workflow_url(self, owner: str, repo: str, workflow_id: str) -> str:
         """Generate the workflow URL.
 

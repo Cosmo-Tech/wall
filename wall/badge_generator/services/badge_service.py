@@ -32,19 +32,17 @@ class BadgeService:
             List[Dict[str, str]]: List of badge data dictionaries
         """
         workflows = self.github_service.get_repository_workflows(organization, repo_name)
-        
         repo_badges = []
         for workflow in workflows:
             workflow_id = workflow.path.split("/")[-1]
             repo_badges.append(
                 {
-                    "url": self.github_service.get_workflow_badge_url(
-                        organization, repo_name, workflow_id
-                    ),
+                    "url": workflow.badge_url,
                     "link": self.github_service.get_workflow_url(
                         organization, repo_name, workflow_id
                     ),
                     "name": workflow.name,
+                    "state": workflow.state
                 }
             )
         return repo_badges
