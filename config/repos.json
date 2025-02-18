@@ -30,15 +30,9 @@
       "name": "terraform-kubernetes-cosmotech-tenant"
     }
   ],
-  "Frontend": [
+  "Web app": [
     {
       "name": "cosmotech-api-typescript-client"
-    },
-    {
-      "name": "terraform-kubernetes-cosmotech-common"
-    },
-    {
-      "name": "terraform-kubernetes-cosmotech-tenant"
     },
     {
       "name": "azure-sample-webapp"
