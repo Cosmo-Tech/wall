@@ -60,15 +60,17 @@ class GitHubService:
             logger.error(f"Error fetching workflows for {owner}/{repo_name}: {e}")
             return []
 
-    def get_workflow_url(self, owner: str, repo: str, workflow_id: str) -> str:
+    def get_workflow_url(self, owner: str, repo: str, workflow: Workflow) -> str:
         """Generate the workflow URL.
 
         Args:
             owner: Repository owner/organization.
             repo: Repository name.
-            workflow_id: Workflow file name.
+            workflow: The workflow object.
 
         Returns:
             str: URL for the workflow page.
         """
-        return f"https://github.com/{owner}/{repo}/actions/workflows/{workflow_id}"
+        # Convert the workflow path to a URL path by removing .yml extension
+        workflow_path = workflow.path.replace('.yml', '')
+        return f"https://github.com/{owner}/{repo}/actions/workflows/{workflow_path}"
