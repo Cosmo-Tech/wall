@@ -29,17 +29,15 @@ def test_config_manager(tmp_path, monkeypatch):
     assert config_manager.get_github_token() == "dummy-token"
 
 
-def test_github_service():
+def test_github_service(mocker):
     """Test GitHub service."""
     service = GitHubService("dummy-token")
 
     # Test URL generation
-
-    workflow_url = service.get_workflow_url("test-org", "test-repo", "test.yml")
-    assert (
-        workflow_url
-        == "https://github.com/test-org/test-repo/actions/workflows/test.yml"
-    )
+    mock_workflow = mocker.Mock()
+    mock_workflow.path = "test.yml"
+    workflow_url = service.get_workflow_url("test-org", "test-repo", mock_workflow)
+    assert workflow_url == "https://github.com/test-org/test-repo/actions/workflows/test"
 
 
 def test_badge_service(mocker):
@@ -49,8 +47,10 @@ def test_badge_service(mocker):
     mock_workflow = mocker.Mock()
     mock_workflow.name = "Test Workflow"
     mock_workflow.path = "workflows/test.yml"
+    mock_workflow.html_url = "https://example.com/workflow"
+    mock_workflow.badge_url = "https://example.com/badge.svg"
+    mock_workflow.state = "active"
     github_service.get_repository_workflows.return_value = [mock_workflow]
-    github_service.get_workflow_url.return_value = "https://example.com/workflow"
 
     # Create badge service
     service = BadgeService(github_service)
@@ -60,6 +60,8 @@ def test_badge_service(mocker):
     assert len(badges) == 1
     assert badges[0]["link"] == "https://example.com/workflow"
     assert badges[0]["name"] == "Test Workflow"
+    assert badges[0]["url"] == "https://example.com/badge.svg"
+    assert badges[0]["state"] == "active"
 
 
 def test_generate_html():
