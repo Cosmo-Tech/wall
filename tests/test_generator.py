@@ -1,13 +1,10 @@
 """Tests for the badge generator."""
 
 import json
-from pathlib import Path
-
-import pytest
 
 from wall.badge_generator.config.config_manager import ConfigManager
-from wall.badge_generator.services.github_service import GitHubService
 from wall.badge_generator.services.badge_service import BadgeService
+from wall.badge_generator.services.github_service import GitHubService
 
 
 def test_config_manager(tmp_path, monkeypatch):
@@ -35,11 +32,14 @@ def test_config_manager(tmp_path, monkeypatch):
 def test_github_service():
     """Test GitHub service."""
     service = GitHubService("dummy-token")
-    
+
     # Test URL generation
 
     workflow_url = service.get_workflow_url("test-org", "test-repo", "test.yml")
-    assert workflow_url == "https://github.com/test-org/test-repo/actions/workflows/test.yml"
+    assert (
+        workflow_url
+        == "https://github.com/test-org/test-repo/actions/workflows/test.yml"
+    )
 
 
 def test_badge_service(mocker):

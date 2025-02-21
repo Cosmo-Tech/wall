@@ -1,9 +1,9 @@
 """Entry point for the badge generator."""
 
 from .config.config_manager import ConfigManager
-from .services.github_service import GitHubService
-from .services.badge_service import BadgeService
 from .logger import logger
+from .services.badge_service import BadgeService
+from .services.github_service import GitHubService
 
 
 def main():

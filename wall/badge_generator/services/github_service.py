@@ -1,19 +1,20 @@
 """GitHub API interaction service."""
 
 from typing import List
-from github import Github, Auth
+
+from github import Auth, Github
 from github.Repository import Repository
 from github.Workflow import Workflow
 
 from ..logger import logger
 
-import github
+
 class GitHubService:
     """Service for interacting with GitHub API."""
 
     def __init__(self, token: str):
         """Initialize the GitHub service with credentials.
-        
+
         Args:
             token: GitHub API token
         """
@@ -72,5 +73,5 @@ class GitHubService:
             str: URL for the workflow page.
         """
         # Convert the workflow path to a URL path by removing .yml extension
-        workflow_path = workflow.path.replace('.yml', '')
+        workflow_path = workflow.path.replace(".yml", "")
         return f"https://github.com/{owner}/{repo}/actions/workflows/{workflow_path}"

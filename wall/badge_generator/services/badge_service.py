@@ -1,7 +1,7 @@
 """Badge generation service."""
 
-from typing import Dict, List
 from pathlib import Path
+from typing import Dict, List
 
 from ..html_generator import generate_html
 from ..logger import logger
@@ -13,7 +13,7 @@ class BadgeService:
 
     def __init__(self, github_service: GitHubService):
         """Initialize the badge service.
-        
+
         Args:
             github_service: Initialized GitHub service instance
         """
@@ -31,17 +31,17 @@ class BadgeService:
         Returns:
             List[Dict[str, str]]: List of badge data dictionaries
         """
-        workflows = self.github_service.get_repository_workflows(organization, repo_name)
+        workflows = self.github_service.get_repository_workflows(
+            organization, repo_name
+        )
         repo_badges = []
         for workflow in workflows:
             repo_badges.append(
                 {
                     "url": workflow.badge_url,
-                    "link": self.github_service.get_workflow_url(
-                        organization, repo_name, workflow
-                    ),
+                    "link": workflow.html_url,
                     "name": workflow.name,
-                    "state": workflow.state
+                    "state": workflow.state,
                 }
             )
         return repo_badges
@@ -61,7 +61,7 @@ class BadgeService:
 
             logger.info(f"Processing {group_name} repositories")
             group_data = []
-            
+
             for repo in repos:
                 badges = self.generate_repository_badges(
                     grouped_repos["organization"], repo["name"]

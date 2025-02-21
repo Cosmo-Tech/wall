@@ -63,7 +63,9 @@ class ConfigManager:
 
         with open(config_path) as f:
             config = json.load(f)
-            logger.info(f"Loaded configuration for organization: {config.get('organization')}")
+            logger.info(
+                f"Loaded configuration for organization: {config.get('organization')}"
+            )
             return config
 
     def get_config(self) -> Config:
