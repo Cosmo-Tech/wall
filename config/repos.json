@@ -28,6 +28,12 @@
     },
     {
       "name": "terraform-kubernetes-cosmotech-tenant"
+    },
+    {
+      "name": "terraform-azure-cosmotech-tenant"
+    },
+    {
+      "name": "terraform-azure-cosmotech-tenant"
     }
   ],
   "Web app": [
@@ -36,6 +42,15 @@
     },
     {
       "name": "azure-sample-webapp"
+    },
+    {
+      "name": "webapp-component-ui"
+    },
+    {
+      "name": "webapp-component-core"
+    },
+    {
+      "name": "webapp-component-azure"
     }
   ]
 }
