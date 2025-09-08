@@ -4,7 +4,7 @@ version = "0.1.0"
 description = "GitHub Workflow Status Wall"
 requires-python = ">=3.8"
 dependencies = [
-    "PyGithub==2.6.1",
+    "PyGithub==2.8.1",
     "python-dotenv==1.0.1",
     "rich>=13.0.0",
     "ruff>=0.9.6",
