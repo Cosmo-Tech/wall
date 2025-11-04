@@ -1,7 +1,7 @@
 {
   "name": "GitHub Workflow Status Wall",
   "short_name": "Badge Wall",
-  "start_url": "/",
+  "start_url": "/wall",
   "display": "standalone",
   "background_color": "#f6f8fa",
   "theme_color": "#24292e",
