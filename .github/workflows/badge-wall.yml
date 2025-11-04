@@ -1,7 +1,10 @@
 name: Generate and Deploy Badge Wall
 
+permissions:
+  contents: read
+
 on:
-  push:
+  pull_request:
     branches: [main]
   schedule:
     - cron: '0 0 * * 1'  # Weekly on Monday
@@ -16,20 +19,18 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: write
-    
+
     steps:
-    - uses: actions/checkout@v4
-    
+    - uses: actions/checkout@v5
+
     - name: Set up Python
       uses: actions/setup-python@v5
       with:
         python-version: "3.13"
-    
-    - name: Install uv
-      run: |
-        curl -LsSf https://astral.sh/uv/install.sh | sh
-        echo "$HOME/.cargo/bin" >> $GITHUB_PATH
-    
+
+    - uses: astral-sh/setup-uv@v6.5.0
+    - name: Set up Python
+      run: uv python install
     - name: Create and activate virtual environment
       run: |
         uv venv
@@ -37,8 +38,8 @@ jobs:
         echo "$PWD/.venv/bin" >> $GITHUB_PATH
     
     - name: Install dependencies
-      run: uv pip install -e .
-    
+      run: uv pip install .
+
     - name: Generate badge wall
       run: generate-badges
       env:
