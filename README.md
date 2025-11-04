@@ -53,3 +53,5 @@ gh workflow run "Deploy to GitHub Pages"
 3. Select "Add to Home screen" or "Install app".
 4. Follow the prompts to add the app to your home screen.
 5. The app will now be available on your home screen for quick access.
+
+Icons from: <a href="https://www.flaticon.com/free-icons/brick" title="brick icons">Brick icons created by max.icons - Flaticon</a>
