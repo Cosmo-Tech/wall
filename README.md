@@ -45,3 +45,13 @@ gh workflow run "Deploy to GitHub Pages"
 2. Create a feature branch
 3. Make your changes
 4. Submit a pull request
+
+## Installing the PWA on Your Phone
+
+1. Open the GitHub Workflow Status Wall in your mobile browser.
+2. Tap the browser menu (usually three dots or lines in the upper right corner).
+3. Select "Add to Home screen" or "Install app".
+4. Follow the prompts to add the app to your home screen.
+5. The app will now be available on your home screen for quick access.
+
+Icons from: <a href="https://www.flaticon.com/free-icons/brick" title="brick icons">Brick icons created by max.icons - Flaticon</a>
