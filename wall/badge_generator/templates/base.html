@@ -9,15 +9,15 @@
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'><path fill='%23218bff' d='M8 0a8 8 0 100 16A8 8 0 008 0zm3.5 8.5l-5 3a.5.5 0 01-.75-.4v-6a.5.5 0 01.75-.4l5 3a.5.5 0 010 .8z'/></svg>">
     <link rel="manifest" href="/manifest.json">
     <script>
-        if ('serviceWorker' in navigator) {
-            window.addEventListener('load', function() {
-                navigator.serviceWorker.register('/service-worker.js').then(function(registration) {
+        if ('serviceWorker' in navigator) {{
+            window.addEventListener('load', function() {{
+                navigator.serviceWorker.register('/service-worker.js').then(function(registration) {{
                     console.log('ServiceWorker registration successful with scope: ', registration.scope);
-                }, function(err) {
+                }}, function(err) {{
                     console.log('ServiceWorker registration failed: ', err);
-                });
-            });
-        }
+                }});
+            }});
+        }}
     </script>
     <title>GitHub Workflow Status Wall</title>
     <style>
