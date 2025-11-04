@@ -45,6 +45,14 @@ jobs:
       env:
         TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
+    - name: Copy PWA files
+      run: |
+        cp manifest.json docs/manifest.json
+        cp wall/badge_generator/templates/service-worker.js docs/service-worker.js
+        mkdir -p docs/assets
+        cp assets/icon-192x192.png docs/assets/
+        cp assets/icon-512x512.png docs/assets/
+
     - name: Deploy to GitHub Pages
       uses: JamesIves/github-pages-deploy-action@v4
       with:
