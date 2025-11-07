@@ -20,6 +20,9 @@
     },
     {
       "name": "cosmotech-api-python-client"
+    },
+    {
+      "name": "Babylon"
     }
   ],
   "Infrastructure": [
